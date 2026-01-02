@@ -1,0 +1,22 @@
+{
+  "name": "vrchni",
+  "version": "1.0.0",
+  "description": "A single Hono.js index file that serves HTML on each route",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js"
+  },
+  "keywords": [
+    "hono",
+    "server",
+    "html"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "hono": "^4.0.0",
+    "@hono/node-server": "^1.0.0"
+  }
+}
