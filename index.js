@@ -14,6 +14,8 @@ const escapeHtml = (unsafe) => {
 };
 
 // Helper function to generate HTML page
+// Note: 'content' parameter should contain safe, pre-escaped HTML
+// All user inputs must be escaped before being passed as content
 const generateHtmlPage = (title, content) => {
   const escapedTitle = escapeHtml(title);
   return `<!DOCTYPE html>
