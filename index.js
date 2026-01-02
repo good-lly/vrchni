@@ -83,12 +83,14 @@ app.get('/', (c) => {
   return c.html(generateHtmlPage('Vrchni - Home', content));
 });
 
+const ROUTE_PREFIX = '/route/';
+
 // Wildcard route handler for /route/*
 app.get('/route/*', (c) => {
   const path = c.req.path;
-  // More robust route name extraction
-  const routeName = path.startsWith('/route/') 
-    ? path.substring('/route/'.length).trim() || 'unknown'
+  // Extract route name from path
+  const routeName = path.startsWith(ROUTE_PREFIX) 
+    ? path.substring(ROUTE_PREFIX.length) || 'unknown'
     : 'unknown';
   const escapedRouteName = escapeHtml(routeName);
   
