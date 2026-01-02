@@ -75,7 +75,7 @@ app.get('/', (c) => {
 // Wildcard route handler for /route/*
 app.get('/route/*', (c) => {
   const path = c.req.path;
-  const routeName = path.split('/route/')[1] || 'unknown';
+  const routeName = path.split('/route/')[1]?.trim() || 'unknown';
   
   const content = `
     <h1>Route: ${routeName}</h1>
