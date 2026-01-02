@@ -15,12 +15,13 @@ const escapeHtml = (unsafe) => {
 
 // Helper function to generate HTML page
 const generateHtmlPage = (title, content) => {
+  const escapedTitle = escapeHtml(title);
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>${title}</title>
+    <title>${escapedTitle}</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -85,7 +86,10 @@ app.get('/', (c) => {
 // Wildcard route handler for /route/*
 app.get('/route/*', (c) => {
   const path = c.req.path;
-  const routeName = path.split('/route/')[1]?.trim() || 'unknown';
+  // More robust route name extraction
+  const routeName = path.startsWith('/route/') 
+    ? path.substring('/route/'.length).trim() || 'unknown'
+    : 'unknown';
   const escapedRouteName = escapeHtml(routeName);
   
   const content = `
